@@ -1,7 +1,7 @@
-#@smokeScenario
+@smokeFeature
 Feature: feature to test Login
 
-#  @SmokeTest
+  @SmokeTest
   Scenario: Successful login with valid credentials
 
     Given User Launch Chrome browser in login page

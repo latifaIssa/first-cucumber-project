@@ -9,10 +9,12 @@ import io.cucumber.junit.Cucumber;
         glue= {"stepDefinisions"},
         monochrome = true,
         //we can create folder or file to the report
-//        plugin = {"pretty","html:target/HtmlReports"}
-//        plugin = {"pretty","json:target/JsonReports"}
         // first we should create subfolder JUnitReports
-        plugin = {"pretty","junit:target/JUnitReports/report.xml"}
+        plugin = {"pretty","junit:target/JUnitReports/report.xml",
+                "html:target/HtmlReports",
+                "json:target/JsonReports"
+        },
+        tags = "@SmokeTest"
 )
 public class Runner {
 }
