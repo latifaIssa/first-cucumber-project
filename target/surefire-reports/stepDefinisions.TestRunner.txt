@@ -1,0 +1,73 @@
+-------------------------------------------------------------------------------
+Test set: stepDefinisions.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.261 s <<< FAILURE! - in stepDefinisions.TestRunner
+Sunday Isn't Friday # it is the test behaviour(Is it Friday yet?  # it is an idea to make the feature name similar to file name)  Time elapsed: 0.057 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'today is Sunday' and 2 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("today is Sunday")
+public void today_is_sunday() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I ask whether it's Friday yet")
+public void i_ask_whether_it_s_friday_yet() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I should be told {string}")
+public void i_should_be_told(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
+Successful login with valid credentials(feature to test Login)  Time elapsed: 0.006 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'User Launch Chrome browser in login page' and 7 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("User Launch Chrome browser in login page")
+public void user_launch_chrome_browser_in_login_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("User opens URL {string}")
+public void user_opens_url(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("User enters email as {string} and Password as {string}")
+public void user_enters_email_as_and_password_as(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("Click on login")
+public void click_on_login() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("first page title should be {string}")
+public void first_page_title_should_be(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("User click on Log out link")
+public void user_click_on_log_out_link() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("Page Title should be {string}")
+public void page_title_should_be(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("close browser")
+public void close_browser() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
