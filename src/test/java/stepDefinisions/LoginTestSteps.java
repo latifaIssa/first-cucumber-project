@@ -4,12 +4,17 @@ import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageObjects.LoginPage;
+
 import java.util.concurrent.TimeUnit;
 
 
 public class LoginTestSteps {
 
     WebDriver driver = null;
+
+   //Declare the login instance as global
+    LoginPage login;
 
     @Given("Browser is open.")
     public void browser_is_open() {
@@ -32,22 +37,42 @@ public class LoginTestSteps {
     @When("^user enters (.*) and (.*)$")
     public void user_enters_username_and_password(String username, String password) throws InterruptedException {
         System.out.println("Inside-Step: user enters username and password.");
-        driver.findElement(By.id("name")).sendKeys(username);
-        driver.findElement(By.id("password")).sendKeys(password);
+
+//        Using POM - Page Object Model
+        login = new LoginPage(driver);
+        login.enter_username(username);
+        login.enter_password(password);
+
+    //  These two lines without POM
+    //   driver.findElement(By.id("name")).sendKeys(username);
+    //   driver.findElement(By.id("password")).sendKeys(password);
+
         Thread.sleep(2000);
 
     }
     @And("user click on login btn")
     public void user_click_on_login_btn() throws InterruptedException {
         System.out.println("Inside-Step: user click on login btn");
-        driver.findElement(By.id("login")).click();
+
+//        Using POM - Page Object Model
+        login.Click_on_login();
+
+//        without POM
+//        driver.findElement(By.id("login")).click();
+
         Thread.sleep(2000);
     }
 
     @Then("user is navigate to home page")
     public void user_is_navigate_to_home_page() {
         System.out.println("Inside-Step: user is navigate to home page");
-        driver.findElement(By.id("logout")).isDisplayed();
+
+//        Using POM - Page Object Model
+        login.checkIsLogoutDisplayed();
+
+//        without POM
+//        driver.findElement(By.id("logout")).isDisplayed();
+
         driver.close();
         driver.quit();
     }

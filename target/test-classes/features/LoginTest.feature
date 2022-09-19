@@ -14,5 +14,5 @@ Feature: Test Login functionality
     Then user is navigate to home page
     Examples:
         | username | password |
-        |Latifa|12345|
+        |   Latifa | 12345    |
         |   Lat    | 123      |
