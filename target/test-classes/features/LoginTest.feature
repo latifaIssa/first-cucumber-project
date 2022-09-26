@@ -9,7 +9,7 @@ Feature: Test Login functionality
     Scenario Outline: Check Login is successful with valid credential
     Given Browser is open.
     And user is on login page
-    When user enters <username> and <password>.
+    When user enters <username> and <password>
     And user click on login btn
     Then user is navigate to home page
     Examples:
