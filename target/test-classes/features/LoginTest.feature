@@ -1,6 +1,5 @@
 Feature: Test Login functionality
 
-
     #  using the <> to parameterization the values
     #  change the scenario to scenario outline
     # add the examples

@@ -2,8 +2,14 @@ package stepDefinisions;
 
 import PageFactory.HomePage;
 import PageFactory.LoginPage_PF;
-import io.cucumber.java.en.*;
-import org.openqa.selenium.By;
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.LoginPage;
@@ -15,18 +21,48 @@ public class LoginTestSteps {
 
     WebDriver driver = null;
 
-   //Declare the login instance as global
+    //Declare the login instance as global
     LoginPage login;
     LoginPage_PF login_PF;
     HomePage home;
 
-    @Given("Browser is open.")
-    public void browser_is_open() {
-        System.out.println("Inside-Step: Browser is open.");
-        System.setProperty("webdriver.chrome.driver","C:/Users/lmasri/Documents/Cucumber-project/first_cucumber/src/test/resources/Drivers/chromedriver.exe");
+    /*
+     * using After(value="@smoke", order=2)
+     * value for conditional hooks --> execute after specific scenario
+     * order for ordered the hooks
+     * */
+
+    // Before each step
+    @BeforeStep(order = 1)
+    public void beforeStep2() {
+        System.out.println("before step2");
+    }
+
+    @BeforeStep(order = -1)
+    public void beforeStep1() {
+        System.out.println("before step1");
+    }
+
+    // After each step
+    @AfterStep
+    public void afterSteps() {
+        System.out.println("After step");
+    }
+
+    // Before Scenario
+    @Before
+    public void browserSetup() {
+        System.setProperty("webdriver.chrome.driver", "C:/Users/lmasri/Documents/Cucumber-project/first_cucumber/src/test/resources/Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+//        driver.manage().window().maximize();
+    }
+
+
+    @Given("Browser is open.")
+    public void browser_is_open() {
+        System.out.println("Inside-Step: Browser is open.");
     }
 
     @And("user is on login page")
@@ -59,19 +95,18 @@ public class LoginTestSteps {
         Thread.sleep(2000);
 
     }
+
     @And("user click on login btn")
     public void user_click_on_login_btn() throws InterruptedException {
         System.out.println("Inside-Step: user click on login btn");
 
-//        Using POM - Page Object Model - Page Factory
-           login_PF.clickLogin();
+//      Using POM - Page Object Model - Page Factory
+        login_PF.clickLogin();
 
-//        Using POM - Page Object Model
-//        login.Click_on_login();
-
-
-//        without POM
-//        driver.findElement(By.id("login")).click();
+//      Using POM - Page Object Model
+//      login.Click_on_login()
+//      without POM
+//      driver.findElement(By.id("login")).click();
 
         Thread.sleep(2000);
     }
@@ -80,15 +115,20 @@ public class LoginTestSteps {
     public void user_is_navigate_to_home_page() {
         System.out.println("Inside-Step: user is navigate to home page");
 
-//        By using the Page Factory Code
-          home.checkLogoutBtn();
+        home = new HomePage(driver);
+//      By using the Page Factory Code
+        home.checkLogoutBtn();
 
-//        Using POM - Page Object Model
-//        login.checkIsLogoutDisplayed();
+//      Using POM - Page Object Model
+//      login.checkIsLogoutDisplayed();
+//      without POM
+//      driver.findElement(By.id("logout")).isDisplayed();
 
-//        without POM
-//        driver.findElement(By.id("logout")).isDisplayed();
+    }
 
+    //After Scenario
+    @After
+    public void teardown() {
         driver.close();
         driver.quit();
     }
