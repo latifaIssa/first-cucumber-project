@@ -1,5 +1,7 @@
 package stepDefinisions;
 
+import PageFactory.HomePage;
+import PageFactory.LoginPage_PF;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +17,8 @@ public class LoginTestSteps {
 
    //Declare the login instance as global
     LoginPage login;
+    LoginPage_PF login_PF;
+    HomePage home;
 
     @Given("Browser is open.")
     public void browser_is_open() {
@@ -38,14 +42,19 @@ public class LoginTestSteps {
     public void user_enters_username_and_password(String username, String password) throws InterruptedException {
         System.out.println("Inside-Step: user enters username and password.");
 
-//        Using POM - Page Object Model
-        login = new LoginPage(driver);
-        login.enter_username(username);
-        login.enter_password(password);
+        //  Using POM - Page Object Model by Page Factory
+        login_PF = new LoginPage_PF(driver);
+        login_PF.enterUsername(username);
+        login_PF.enterPassword(password);
 
-    //  These two lines without POM
-    //   driver.findElement(By.id("name")).sendKeys(username);
-    //   driver.findElement(By.id("password")).sendKeys(password);
+        // Using POM - Page Object Model
+        // login = new LoginPage(driver);
+        // login.enter_username(username);
+        // login.enter_password(password);
+
+        //  These two lines without POM
+        //   driver.findElement(By.id("name")).sendKeys(username);
+        //   driver.findElement(By.id("password")).sendKeys(password);
 
         Thread.sleep(2000);
 
@@ -54,8 +63,12 @@ public class LoginTestSteps {
     public void user_click_on_login_btn() throws InterruptedException {
         System.out.println("Inside-Step: user click on login btn");
 
+//        Using POM - Page Object Model - Page Factory
+           login_PF.clickLogin();
+
 //        Using POM - Page Object Model
-        login.Click_on_login();
+//        login.Click_on_login();
+
 
 //        without POM
 //        driver.findElement(By.id("login")).click();
@@ -67,8 +80,11 @@ public class LoginTestSteps {
     public void user_is_navigate_to_home_page() {
         System.out.println("Inside-Step: user is navigate to home page");
 
+//        By using the Page Factory Code
+          home.checkLogoutBtn();
+
 //        Using POM - Page Object Model
-        login.checkIsLogoutDisplayed();
+//        login.checkIsLogoutDisplayed();
 
 //        without POM
 //        driver.findElement(By.id("logout")).isDisplayed();

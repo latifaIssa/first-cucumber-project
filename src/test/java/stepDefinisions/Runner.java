@@ -14,6 +14,8 @@ import io.cucumber.junit.Cucumber;
                 "html:target/HtmlReports",
                 "json:target/JsonReports"
         },
+//        for multiple tags you can use "or"&"And" {@smoke and @regression}
+//        to ignore the tag --> not @...
         tags = "@SmokeTest"
 )
 public class Runner {
